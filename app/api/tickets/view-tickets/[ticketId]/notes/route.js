@@ -1,9 +1,11 @@
+import { connectToDB } from "@/lib/dbConfig";
 import Note from "@/Models/noteModel";
 import Ticket from "@/Models/ticketModel";
 import User from "@/Models/userModel";
 import { NextResponse } from "next/server";
 
 export const GET = async (req, { params }) => {
+  await connectToDB();
   const userId = req.headers.get("x-user-id");
   const user = await User.findById(userId);
 

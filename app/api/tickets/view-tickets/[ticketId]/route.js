@@ -1,8 +1,10 @@
+import { connectToDB } from "@/lib/dbConfig";
 import Ticket from "@/Models/ticketModel";
 import User from "@/Models/userModel";
 import { NextResponse } from "next/server";
 
 export const GET = async (req, { params }) => {
+  await connectToDB();
   const ticket = await Ticket.findById(params.ticketId);
   if (!ticket) {
     return NextResponse.json({ message: "No Ticket found" }, { status: 404 });

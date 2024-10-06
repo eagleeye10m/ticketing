@@ -10,8 +10,6 @@ import { toast } from "react-toastify";
 import Spinner from "@/components/Spinner";
 
 function RegisterPage() {
-  console.log("re render");
-
   const dispatch = useDispatch();
   const router = useRouter();
   const [formData, setFormData] = useState({

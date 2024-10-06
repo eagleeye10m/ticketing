@@ -38,13 +38,13 @@ body {
     @apply flex justify-between items-center py-5 px-4 border-[1px] border-b-[#e6e6e6] mb-[60px];
     ul {
       @apply flex items-center justify-between;
-      li {
-        @apply ml-5;
-        button,
-        a {
-          @apply flex items-center gap-1;
-        }
-      }
+    }
+  }
+  .header li {
+    @apply ml-5;
+    button,
+    a {
+      @apply flex items-center gap-1;
     }
   }
 

@@ -31,3 +31,208 @@ body {
     text-wrap: balance;
   }
 }
+
+@layer components {
+  /*header component*/
+  .header {
+    @apply flex justify-between items-center py-5 px-4 border-[1px] border-b-[#e6e6e6] mb-[60px];
+    ul {
+      @apply flex items-center justify-between;
+      li {
+        @apply ml-5;
+        button,
+        a {
+          @apply flex items-center gap-1;
+        }
+      }
+    }
+  }
+
+  /*support desk*/
+  .home {
+    @apply flex items-center justify-center flex-col;
+  }
+
+  .heading {
+    @apply flex items-center flex-col text-[2rem] font-bold mb-[50px] py-0 px-5;
+    p {
+      @apply text-[#828282];
+    }
+    h1 {
+      @apply text-[2rem];
+    }
+  }
+
+  .header-items {
+    @apply flex gap-[2rem];
+  }
+
+  .btn {
+    @apply flex items-center justify-center py-[10px] px-5 border-[#000] border-[1px] border-solid rounded-[5px] bg-[#000] text-[#fff] cursor-pointer text-center font-bold transition gap-1 duration-300;
+    svg {
+      @apply ml-[8px];
+    }
+  }
+
+  .btn:hover {
+    @apply scale-[98%];
+  }
+
+  .btn-reverse {
+    @apply bg-[#fff] text-[#000];
+  }
+
+  .btn-block {
+    @apply h-full mb-5;
+  }
+
+  .btn-back {
+    @apply w-[150px] mb-5;
+  }
+
+  /*Register page*/
+  .form {
+    @apply w-[70%] my-0;
+  }
+
+  .form-group {
+    @apply mb-[10px];
+  }
+}
+
+.form-group label {
+  @apply text-right block mt-0 mr-0 mb-[5px] ml-[3px];
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  @apply w-full p-[10px] border-[1px] border-solid border-[#9f8888] rounded-[5px] mb-[10px];
+}
+
+/*Spinner*/
+.loadingSpinnerContainer {
+  @apply fixed top-0 right-0 bottom-0 left-0 bg-[rgba(0,0,0,0.5)] z-[5000] flex justify-center items-center;
+}
+
+.loadingSpinner {
+  @apply w-16 h-16 border-8 border-solid rounded-[50%] border-x-transparent border-t-black border-b-gray-700 animate-custom-spin;
+}
+
+/*Tickets*/
+
+.ticket,
+.ticket-headings {
+  @apply grid grid-cols-4 gap-5 justify-between items-center mb-5 bg-[#f4f4f4] px-4 py-2.5 rounded-[5px] text-center;
+}
+.ticket-headings {
+  @apply font-bold;
+}
+
+.ticket-created {
+  @apply border-[1px] border-solid border-[#e6e6e6] rounded-[5px] p-[50px];
+}
+
+.ticket-number {
+  @apply mb-[30px];
+
+  h2 {
+    @apply text-[2.3rem] mb-[10px];
+  }
+
+  p {
+    @apply text-[1.3rem];
+  }
+}
+
+.ticket-info {
+  @apply text-[1.3rem];
+}
+
+.status {
+  @apply bg-[#333] text-[#fff] w-[100px] px-5 py-0 justify-self-center rounded-[10px] text-[16px] text-center;
+}
+
+.status-new {
+  @apply bg-[green] text-[#fff] rounded-[10px];
+}
+
+.status-open {
+  @apply bg-[steelblue] text-[#fff] rounded-[10px];
+}
+
+.status-closed {
+  @apply bg-[darkred] text-[#fff] rounded-[10px];
+}
+
+.ticket-page {
+  @apply relative text-left;
+
+  h2 {
+    @apply flex items-center justify-between;
+  }
+
+  .btn {
+    @apply mb-[30px];
+  }
+
+  .btn-block {
+    @apply w-full mt-[30px];
+  }
+}
+
+.ticket-desc {
+  @apply border-[1px] text-right border-solid border-[#ccc] mx-0 my-5 text-[17px] bg-[#f4f4f4] py-[10px] px-[15px] rounded-[5px];
+}
+
+/*Single ticket*/
+
+.note {
+  @apply border-[1px] border-solid border-[#e6e6e6] rounded-[5px] text-right p-5 mb-5 relative;
+}
+
+.note-head {
+  @apply bg-[#f4f4f4] px-5 py-[5px] flex justify-between items-center mb-5;
+}
+
+.note-date {
+  @apply absolute top-[15px] left-[10px] text-[14px];
+}
+
+.delete-note {
+  @apply text-[red] cursor-pointer absolute bottom-[10px] right-5;
+}
+
+.btn-close {
+  @apply bg-none border-none text-[#000] absolute top-[5px] right-[5px] text-[16px] cursor-pointer;
+}
+
+.btn-danger {
+  @apply border-none bg-[darkred] !h-auto;
+}
+
+.btn-close:hover {
+  @apply text-[red] transition scale-[98%] duration-150;
+}
+p.status-in-progress {
+  @apply text-[orangered];
+}
+
+p.status-waiting {
+  @apply text-[red];
+}
+
+p.status-complete {
+  @apply text-[green];
+}
+
+.footer {
+  @apply sticky top-[95vh] text-center;
+}
+
+@layer base {
+  h2,
+  h3 {
+    @apply font-semibold mb-[10px];
+  }
+}

@@ -1,7 +1,18 @@
-import { Inter } from "next/font/google";
+import { Amiri } from "next/font/google";
+import dynamic from "next/dynamic";
 import "./globals.css";
+import Header from "@/components/Header";
 
-const inter = Inter({ subsets: ["latin"] });
+import ToastProvider from "@/lib/toast/ToastProvider";
+
+const StoreProvider = dynamic(() => import("@/redux/StoreProvider"), {
+  ssr: false,
+});
+const inter = Amiri({
+  subsets: ["arabic"],
+  display: "swap",
+  weight: ["400", "700"],
+});
 
 export const metadata = {
   title: "Create Next App",
@@ -11,7 +22,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} h-full bg-white `}>
+        <ToastProvider>
+          <StoreProvider>
+            <Header />
+
+            <div className="max-w-[1200px] mx-auto grid">{children}</div>
+          </StoreProvider>
+        </ToastProvider>
+      </body>
     </html>
   );
 }

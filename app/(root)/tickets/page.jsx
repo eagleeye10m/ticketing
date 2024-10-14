@@ -18,10 +18,11 @@ function ViewTickets() {
   useEffect(() => {
     if (isSuccess) {
       dispatch(reset());
+      console.log("success");
     } else {
       dispatch(viewTickets());
     }
-  }, [tickets, dispatch, reset]);
+  }, [tickets, dispatch]);
 
   if (isLoading) {
     return <Spinner />;

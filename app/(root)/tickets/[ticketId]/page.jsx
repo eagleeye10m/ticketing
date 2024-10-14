@@ -3,7 +3,12 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { FaPlus } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
-import { getTicket, closeTicket } from "@/redux/ticket/ticketSlice";
+import {
+  getTicket,
+  closeTicket,
+  ticketActions,
+  viewAllTickets,
+} from "@/redux/ticket/ticketSlice";
 import { getNotes, createNote } from "@/redux/notes/noteSlice";
 import BackButton from "@/components/BackButton";
 import Spinner from "@/components/Spinner";
@@ -37,7 +42,7 @@ function ViewTicket({ params }) {
   const { notes, isLoading: notesIsLoading } = useSelector(
     (state) => state.notes
   );
-
+  const { reset } = ticketActions;
   const router = useRouter();
   const dispatch = useDispatch();
   const { ticketId } = params;
@@ -56,9 +61,12 @@ function ViewTicket({ params }) {
   }
 
   // Close ticket
-  const onTicketClose = () => {
-    dispatch(closeTicket(ticketId));
+  const onTicketClose = async () => {
+    await dispatch(closeTicket(ticketId));
+    dispatch(viewAllTickets());
     toast.success("Ticket Closed");
+
+    //dispatch(viewAllTickets());
 
     user.isAdmin || user.isStaff
       ? router.push("/tickets/allTickets")
@@ -170,7 +178,7 @@ function ViewTicket({ params }) {
           {ticket.status !== "closed" && (
             <button
               onClick={onTicketClose}
-              className={user.isStaff ? `hidden` : `btn btn-block btn-danger`}
+              className={user.isStaff ? "hidden" : " btn btn-block btn-danger"}
             >
               بستن تیکت
             </button>

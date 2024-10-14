@@ -14,16 +14,12 @@ export default function ViewAllTickets() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("mounted");
-
     if (isSuccess) {
-      console.log("reset");
       dispatch(reset());
     } else {
       dispatch(viewAllTickets());
-      console.log("dispached");
     }
-  }, [tickets, reset]);
+  }, [tickets]);
 
   if (isLoading) {
     return <Spinner />;

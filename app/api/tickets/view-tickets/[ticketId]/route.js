@@ -20,6 +20,7 @@ export const GET = async (req, { params }) => {
 };
 
 export const PUT = async (req, { params }) => {
+  await connectToDB();
   const ticket = await Ticket.findById(params.ticketId);
   if (!ticket) {
     return NextResponse.json({ message: "No Ticket found" }, { status: 404 });
@@ -40,5 +41,6 @@ export const PUT = async (req, { params }) => {
       new: true,
     }
   );
+
   return NextResponse.json(updatedTicket, { status: 201 });
 };

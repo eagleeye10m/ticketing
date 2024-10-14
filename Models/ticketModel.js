@@ -22,6 +22,10 @@ const ticketSchema = new mongoose.Schema(
       enum: ["new", "open", "closed"],
       default: "new",
     },
+    fileUrl: {
+      type: String, // or an array of strings if multiple files are allowed
+      required: true,
+    },
   },
   {
     timestamps: true,

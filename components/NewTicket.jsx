@@ -31,7 +31,7 @@ function NewTicket() {
       dispatch(reset());
       router.push("/tickets");
     }
-  }, [ticket, isError]);
+  }, [ticket]);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -104,6 +104,7 @@ function NewTicket() {
               <input
                 dir="ltr"
                 type="file"
+                name="uploadFile"
                 id="file"
                 className="!border-none !pl-0"
                 onChange={(e) => setFile(e.target.files[0])} // This will update file state

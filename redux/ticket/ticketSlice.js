@@ -132,6 +132,8 @@ const ticketSlice = createSlice({
       .addCase(viewAllTickets.fulfilled, (state, action) => {
         state.isLoading = false;
         state.tickets = action.payload;
+        console.log(state.tickets);
+
         state.isSuccess = true;
       })
       .addCase(getTicket.pending, (state) => {

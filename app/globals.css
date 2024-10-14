@@ -150,19 +150,19 @@ body {
 }
 
 .status {
-  @apply bg-[#333] text-[#fff] w-[100px] px-5 py-0 justify-self-center rounded-[10px] text-[16px] text-center;
+  @apply text-[#fff] w-[100px] px-5 py-0 justify-self-center rounded-[10px] text-[16px] text-center;
 }
 
 .status-new {
-  @apply bg-[green] text-[#fff] rounded-[10px];
+  @apply text-[green];
 }
 
 .status-open {
-  @apply bg-[steelblue] text-[#fff] rounded-[10px];
+  @apply text-[steelblue];
 }
 
 .status-closed {
-  @apply bg-[darkred] text-[#fff] rounded-[10px];
+  @apply text-[darkred];
 }
 
 .ticket-page {
@@ -182,7 +182,7 @@ body {
 }
 
 .ticket-desc {
-  @apply border-[1px] text-right border-solid border-[#ccc] mx-0 my-5 text-[17px] bg-[#f4f4f4] py-[10px] px-[15px] rounded-[5px];
+  @apply flex flex-row-reverse justify-between  border-[1px] text-right border-solid border-[#ccc] mx-0 my-5 text-[17px] bg-[#f4f4f4] py-[10px] px-[15px] rounded-[5px];
 }
 
 /*Single ticket*/

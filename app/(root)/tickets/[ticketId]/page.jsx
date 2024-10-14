@@ -6,7 +6,6 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   getTicket,
   closeTicket,
-  ticketActions,
   viewAllTickets,
 } from "@/redux/ticket/ticketSlice";
 import { getNotes, createNote } from "@/redux/notes/noteSlice";
@@ -14,6 +13,7 @@ import BackButton from "@/components/BackButton";
 import Spinner from "@/components/Spinner";
 import NoteItem from "@/components/NoteItem";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const customStyles = {
   content: {
@@ -42,7 +42,7 @@ function ViewTicket({ params }) {
   const { notes, isLoading: notesIsLoading } = useSelector(
     (state) => state.notes
   );
-  const { reset } = ticketActions;
+
   const router = useRouter();
   const dispatch = useDispatch();
   const { ticketId } = params;
@@ -53,8 +53,9 @@ function ViewTicket({ params }) {
     }
 
     dispatch(getTicket(ticketId));
+
     dispatch(getNotes(ticketId));
-  }, [isError, message, ticketId]);
+  }, []);
 
   if (isLoading) {
     return <Spinner />;
@@ -97,7 +98,7 @@ function ViewTicket({ params }) {
   }
 
   if (isError) {
-    return <h3>Something Went Wrong</h3>;
+    return <h3>{isError}</h3>;
   }
 
   return (
@@ -107,7 +108,7 @@ function ViewTicket({ params }) {
           <header className="ticket-header ">
             <BackButton
               url={
-                user.isAdmin || user.isStaff
+                user?.isAdmin || user?.isStaff
                   ? "/tickets/allTickets"
                   : "/tickets"
               }
@@ -126,8 +127,17 @@ function ViewTicket({ params }) {
             </h3>
             <hr />
             <div className="ticket-desc">
-              <h3 className="font-semibold mb-[10px]">شرح موضوع</h3>
-              <p>{ticket.description}</p>
+              <section>
+                <h3 className="font-semibold mb-[10px]">شرح موضوع</h3>
+                <p>{ticket.description}</p>
+              </section>
+
+              <Link
+                href={ticket.fileUrl}
+                className="self-center p-2 border-[1px] border-solid border-slate-200 rounded-full bg-slate-400 text-white"
+              >
+                فایل ضمیمه
+              </Link>
             </div>
             <h2 className="!justify-end">یادداشت ها</h2>
           </header>
@@ -178,7 +188,7 @@ function ViewTicket({ params }) {
           {ticket.status !== "closed" && (
             <button
               onClick={onTicketClose}
-              className={user.isStaff ? "hidden" : " btn btn-block btn-danger"}
+              className={user?.isStaff ? "hidden" : " btn btn-block btn-danger"}
             >
               بستن تیکت
             </button>

@@ -17,7 +17,9 @@ export const viewTickets = createAsyncThunk(
   "/ticket/view-tickets",
   async (data, thunkAPI) => {
     const userToken = thunkAPI.getState().auth.user.token;
+
     try {
+      console.log(userToken);
       return await ticketService.viewTickets(userToken);
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -115,6 +117,8 @@ const ticketSlice = createSlice({
       })
       .addCase(viewTickets.fulfilled, (state, action) => {
         state.isLoading = false;
+        console.log(action.payload);
+
         state.tickets = action.payload;
         state.isSuccess = true;
       })
@@ -132,7 +136,6 @@ const ticketSlice = createSlice({
       .addCase(viewAllTickets.fulfilled, (state, action) => {
         state.isLoading = false;
         state.tickets = action.payload;
-        console.log(state.tickets);
 
         state.isSuccess = true;
       })

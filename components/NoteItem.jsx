@@ -8,8 +8,11 @@ export default function NoteItem({ note }) {
       }}
     >
       <h4>
-        یادداشت از{" "}
-        {note.isStaff ? <span>کارکنان</span> : <span>{note.user.name}</span>}
+        {note.isStaff ? (
+          <span>یادداشت از کارکنان</span>
+        ) : (
+          <span> {note.user?.name} یادداشت از </span>
+        )}
       </h4>
       <p>{note.text}</p>
       <div className="note-date">

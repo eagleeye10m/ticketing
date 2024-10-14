@@ -20,7 +20,7 @@ function Home() {
           <FaQuestionCircle /> ایجاد تیکت جدید
         </Link>
 
-        <Link href="/tickets" className="btn btn-block">
+        <Link href="/tickets" className="btn btn-block" prefetch={true}>
           <FaTicketAlt /> تیکت های من
         </Link>
       </div>

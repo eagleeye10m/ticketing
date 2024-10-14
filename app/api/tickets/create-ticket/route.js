@@ -68,7 +68,7 @@ export const POST = async (req) => {
       product,
       description,
       status: "new",
-      fileUrl: "blob.url",
+      fileUrl: blob.downloadUrl,
     });
 
     return NextResponse.json(ticket, { status: 201 });
